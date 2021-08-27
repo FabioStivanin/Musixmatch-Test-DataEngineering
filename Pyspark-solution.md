@@ -38,4 +38,5 @@ df.groupBy('year').agg('views':'sum')\
  
  ## max min
  from pyspark.sql.functions import col
+ 
  df.select ([min ('year')]).show()
