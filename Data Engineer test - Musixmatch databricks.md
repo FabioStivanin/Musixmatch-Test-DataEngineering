@@ -19,12 +19,12 @@ device_table = spark.read.format("jdbc")\
 
 device_table.createOrReplaceTempView("DEVICES")
 # ALTERNATIVA
-# device_table.write.saveAsTable("DEVICES")
-# DROP TABLE IF EXISTS <table>     // deletes the metadata and data
-# CREATE TABLE <table> AS SELECT ...
+device_table.write.saveAsTable("DEVICES")
+DROP TABLE IF EXISTS <table>     // deletes the metadata and data
+CREATE TABLE <table> AS SELECT ...
 
 # DELTA
-# device_table.write.format("delta").save("/delta/devices")
+device_table.write.format("delta").save("/delta/devices")
 
 %sql
 select count(distinct device) as count_devices
