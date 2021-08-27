@@ -18,7 +18,7 @@ df.groupBy('year').agg('views':'sum')\
   .select(col('yr').alias('anno'))\
   .orderBy('year')
   
- # MATPLOTLIB
+ ## MATPLOTLIB
  from matplotlib import pyplot as plt
  
  df= df.toPandas()
@@ -28,3 +28,14 @@ df.groupBy('year').agg('views':'sum')\
  plt.xlabel('Anni')
  
  plt.title('Titolo')
+ 
+ 
+ # Esempio 2
+ https://www.youtube.com/watch?v=qYis56u8w4U
+ 
+ ## count + filter
+ df.filter(df.year > 2020).count()
+ 
+ ## max min
+ from pyspark.sql.functions import col
+ df.select ([min ('year')]).show()
