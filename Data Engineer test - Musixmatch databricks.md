@@ -27,6 +27,7 @@ CREATE TABLE <table> AS SELECT ...
 device_table.write.format("delta").save("/delta/devices")
 
 %sql
+  
 select count(distinct device) as count_devices
 , a.day
   from DEVICES a
@@ -38,6 +39,7 @@ where day = 20160101
  ; 
 
 %sql
+  
 select count(distinct device) as count_devices
 , a.day
 , product
@@ -52,6 +54,7 @@ where day= 20160131
 # TASK 2
 
 %python
+  
 table= "views_active_users"
 
 user_table = spark.read.format("jdbc")\
@@ -65,6 +68,7 @@ user_table = spark.read.format("jdbc")\
 user_table.createOrReplaceTempView("USERS")
 
 %sql
+  
 select count(distinct user) as count_users
 , a.country
 , a.application
@@ -81,6 +85,7 @@ select count(distinct user) as count_users
   # TASK 3
 
 %python
+  
 table= "views_lyrics_count"
 
 lyrics_table = spark.read.format("jdbc")\
@@ -95,6 +100,7 @@ lyrics_table.createOrReplaceTempView("LYRICS")
 
 
 %sql
+  
 select  rank() over (partition by application, country  order by sum(count_views) desc ) as ranking
 , country, application, abstract_id
 , sum(count_views) as views
