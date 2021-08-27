@@ -37,6 +37,6 @@ df.groupBy('year').agg('views':'sum')\
  df.filter(df.year > 2020).count()
  
  ## max min
- from pyspark.sql.functions import col
+ from pyspark.sql.functions import max, min
  
  df.select ([min ('year')]).show()
